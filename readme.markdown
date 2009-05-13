@@ -6,10 +6,7 @@ WHAT IS IT?
 
 This is based on Phil Oye's FontUnstack. It is a MooTools implementation of his jQuery plugin that provides a workaround for the CSS/browser limitation of not knowing which typeface in a CSS font stack is actually used on the client-side. It simply adds a class with the name of the installed font to your desired HTML element(s). From there, you use CSS to do something interesting with that new class name. The rest of this text is Phil's, except for the changes required by the MooTools implementation.
 
-KNOWN LIMITS
-------------
-
-This plugin works in MooTools 1.11 (it was originally developed for a Joomla installation, and that uses 1.11) but not in 1.2.2. I'm working on that right now, OK?
+This plugin works in both MooTools 1.11 and 1.2.2.
 
 
 WHY MIGHT YOU WANT THIS?
