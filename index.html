@@ -4,8 +4,18 @@
 	<meta http-equiv="content-type" content="text/html; charset=utf-8">
 	<title>Font UnStack Example</title>
 	<meta name="author" content="Paladin">
-
+	<!--[if lte IE 7 ]>
+	<script>
+		document.createElement("nav");
+		document.createElement("section");
+		document.createElement("article");
+		document.createElement("header");
+		document.createElement("footer");
+		document.createElement("aside");
+	</script>
+	<![endif]-->
   <style type="text/css" media="screen">
+  	article, header, section {display: block; }
     body  {font-family: georgia, times, "times new roman", serif; line-height: 1.4; padding-bottom: 10em; width: 37em; margin: 0 auto;}
     .switch_font, .force_times { font-family: times, "times new roman", serif;}
 
@@ -20,7 +30,7 @@
       h1.set_in_helvetica { margin-left: -.1em; font-weight: bold; color: #999;}
         h1.set_in_helvetica em { color: red; font-style: normal;}
 
-    h2 { text-transform: uppercase; font-size: .8em; margin: 2.4em 0 0 0; padding-left: 1.25em; }
+    h2 { text-transform: uppercase; font-size: .8em; margin: 2.5em 0 0 0; padding-left: 1.25em; }
 
     h2.pullquote { font-weight: normal; font-size: 2em; color: #999; margin: 0; line-height: 1; margin-left: -.40em; padding-left: .5em; text-transform: none; }
       h2.pullquote.set_in_georgia  { margin-left: -.5em;}
@@ -30,10 +40,16 @@
       .set_in_georgia p { line-height: 1.45;}
       p.set_in_times, p.set_in_timesnewroman { line-height: 1.35; width: 30em; }
       
-    
+    aside { float: right; width: 14em; background-color: #CCC; border: 1px solid white; margin: -0.3em 0 0 1em; padding-bottom: 1em; }
+    aside h2 { margin: 1.9em 0 0 0; }
+    aside p { margin: 0.25em 0 0 0; }
+    .paladin { background-color: #CCC; padding-bottom: 0.2em;}
+    ul { margin: 1.5em 0; }
+    .set_in_georgia li { line-height: 1.45; }
+    .set_in_times li, .set_in_timesnewroman li { line-height: 1.35; }
   </style>
 
-  <script type="text/javascript" src="lib/mootools.js"></script>
+  <script type="text/javascript" src="lib/mootools-1.2.2-core-jm.js"></script>
   <script type="text/javascript" src="lib/fontunstack.mootools.js"></script>
   <script type="text/javascript">
 
@@ -46,23 +62,34 @@
   </script>
 </head>
 <body>
+	<article>
+    <header><h1>Font<em>Un</em>stack</h1></header>
 
-    <h1>Font<em>Un</em>stack</h1>
-
-    <p>Phil Oye's original FontUnstack is a jQuery plugin. Seeing its utility isn't limited to jQuery users, I've reimplemented it as a MooTools plugin. I created this as a separate GitHub repo for a couple of reasons:</p>
+	<aside>
+		<h2>About that page title…</h2>
+	
+		<p>The title of this page uses the Zapfino, Futura, Helvetica, or Arial. Depending on whether you have Zapfino, Futura, or Helvetica, you’ll get a different title treatment. View source.</p>
+	
+		<h2>Ok, now what?</h2>
+		<p>Put on your typography fancy pants and grab the code at <a href="http://github.com/Paladin/FontUnstack-MT/tree/master">GitHub</a>.</p>
+	</aside>
+	<section class="paladin">
+    <p>Phil Oye's original FontUnstack is a jQuery plugin. Seeing its utility isn't limited to jQuery users, I've reimplemented it as a MooTools plugin. I created this as a separate GitHub repo for a few reasons:</p>
     
     <ul>
     	<li>The names of the files are changed, making any sort of merge between the two problematic
-    	<li>There is a distinct probability these files will diverge rapidly, as this version doesn't work in MooTools 1.2.2 and may require significant changes before it does
+    	<li>There is a distinct probability these files will diverge rapidly, as this version is a bit of a kluge that straddles both MooTools 1.11 and MooTools 1.2 API's and I'm going to work on cleaning it up as I go forward with it
     	<li>To keep open my future options with this plugin
     </ul>
     
-    <p>The rest of the text of this page is Phil's. I merely did some minor layout revisions.</p>
-    
+    <p>The rest of the text of this page is Phil's. I merely did some minor layout revisions. Plus, just because I could, I recast it as <a href="http://www.html5.org">HTML5</a></p>
+    </section>
+    <section>
     <p>FontUnstack provides a workaround for the CSS/browser limitation of not knowing which typeface in a CSS font stack is actually used on the client-side. It simply adds a class with the name of the installed font to your desired HTML element(s). From there, you use CSS to do something interesting with that new class name.</p>
       
     <p>To see what is happening in this example, you'll need Georgia and Times (or Times New Roman) installed.</p>
-
+    </section>
+	<section>
     <h2>Accounting for differences in x-height</h2>
       
     <p>The body text uses Georgia and then fallback to Times/Times New Roman. Georgia has a large x-height, making it appear larger, and benefits from more lead, while the fallback, Times/Times New Roman, has a small x-height and needs less lead. Also, width of the typefaces differ so the measure changes (the number of characters per line). Let’s bring out our old friend Lorem Ipsum to illustrate. First in Georgia.</p>
@@ -78,25 +105,22 @@
     <p class="emphasis switch_font">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 
     <p>Now it matches the wrapping of the copy set in Georgia.</p>
-      
+    </section>
+    <section>
     <h2>Pullquotes and negative margins</h2>
       
     <p>A hanging quote (when the “ sits outside the left margin and the first letter lines up instead) is normally difficult to achieve when you don't actually know what typeface is used, because the width of the quote mark is different in different typefaces. An example:</p>
-      
+    <section>
     <h2 class="pullquote">“A hanging pullquote…”</h2>
 
     <p>The above is set in Georgia and has a negative of margin of -.5em.</p>
-
+    </section>
+	<section>
     <h2 class="pullquote switch_font">“A hanging pullquote…”</h2>
 
     <p>When set in Times, we use a slightly smaller negative left margin of -.45em to get it to align properly.</p>
-
-    <h2>About that page title…</h2>
-
-    <p>The title of this page uses the Zapfino, Futura, Helvetica, or Arial. Depending on whether you have Zapfino, Futura, or Helvetica, you’ll get a different title treatment. View source.</p>
-
-    <h2>Ok, now what?</h2>
-    <p>Put on your typography fancy pants on and grab the code at <a href="http://github.com/Paladin/FontUnstack-MT/tree/master">GitHub</a>.</p>
-
+    </section>
+    </section>
+    </article>
 </body>
 </html>
