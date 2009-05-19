@@ -4,7 +4,7 @@ FontUnstack
 WHAT IS IT?
 -----------
 
-This is based on Phil Oye's FontUnstack. It is a MooTools implementation of his jQuery plugin that provides a workaround for the CSS/browser limitation of not knowing which typeface in a CSS font stack is actually used on the client-side. It simply adds a class with the name of the installed font to your desired HTML element(s). From there, you use CSS to do something interesting with that new class name. The rest of this text is Phil's, except for the changes required by the MooTools implementation.
+This is based on [Phil Oye's FontUnstack](http://github.com/philoye/fontunstack/tree/master). It is a MooTools implementation of his jQuery plugin that provides a workaround for the CSS/browser limitation of not knowing which typeface in a CSS font stack is actually used on the client-side. It simply adds a class with the name of the installed font to your desired HTML element(s). From there, you use CSS to do something interesting with that new class name. The rest of this text is Phil's, except for the changes required by the MooTools implementation.
 
 This plugin works in both MooTools 1.11 and 1.2.2.
 
